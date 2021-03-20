@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://island.gd" type="Script" id=1]
+[ext_resource path="res://earth.tres" type="Material" id=2]
+[ext_resource path="res://w.png" type="Texture" id=3]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+octaves = 9
+period = 186.6
+persistence = 0.763
+
+[sub_resource type="NoiseTexture" id=2]
+width = 1024
+height = 1024
+noise = SubResource( 1 )
+
+[node name="project" type="Node"]
+script = ExtResource( 1 )
+
+[node name="island" type="TextureRect" parent="."]
+material = ExtResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 54.9701
+margin_top = -76.9727
+margin_right = 234.97
+margin_bottom = -30.9727
+text = "GENERATE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+texture = SubResource( 2 )
+centered = false
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
